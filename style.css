@@ -1,4 +1,12 @@
-/* Police gothique pour les titres */
+/* --- Styles globaux gothiques --- */
+body {
+  background-color: #0e0e0e;
+  color: #f1f1f1;
+  font-family: 'Georgia', serif;
+  margin: 0;
+  padding: 0;
+}
+
 h1 {
   font-family: 'UnifrakturCook', cursive;
   text-align: center;
@@ -7,7 +15,7 @@ h1 {
   margin-top: 20px;
 }
 
-/* Grille de sélection */
+/* --- Grille de sélection des héros --- */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -17,7 +25,6 @@ h1 {
   margin: auto;
 }
 
-/* Conteneur d’un héros */
 .hero {
   background-color: #1c1c1c;
   border: 1px solid #444;
@@ -30,16 +37,16 @@ h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.hero:hover {
+  transform: scale(1.05);
+}
+
 .hero.selected {
   border: 3px solid #ff0000;
   box-shadow: 0 0 15px 5px #ff0000;
 }
 
-.hero:hover {
-  transform: scale(1.05);
-}
-
-/* Style des images pixel art */
+/* --- Image pixel art --- */
 .pixel-img {
   max-width: 100%;
   height: auto;
@@ -49,14 +56,14 @@ h1 {
   margin: auto;
 }
 
-/* Description en petit */
+/* --- Description du héros --- */
 .desc {
   font-size: 0.9em;
   margin-top: 10px;
   color: #ccc;
 }
 
-/* Bouton de confirmation */
+/* --- Bouton de confirmation de sélection --- */
 #confirmButton {
   display: block;
   margin: 20px auto;
@@ -71,4 +78,48 @@ h1 {
 #confirmButton:disabled {
   background-color: #888;
   cursor: not-allowed;
+}
+
+/* --- BARRE DE TÂCHE FIXE EN BAS --- */
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #111;
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+#taskbar button {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 8px 12px;
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+#taskbar button:hover {
+  background-color: #444;
+}
+
+/* --- Conteneur pour l'affichage des onglets --- */
+#interface {
+  margin-bottom: 80px; /* espace pour la barre fixe */
+}
+
+.tab {
+  display: none;
+  background-color: #1c1c1c;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 20px auto;
 }

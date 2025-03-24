@@ -6,62 +6,13 @@ body {
   background-color: #0d0d0d;
   color: #f0f0f0;
   font-family: 'UnifrakturCook', cursive;
-  background-image: url(''); /* optionnel : motif sombre en fond */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-h1, h2, h3 {
-  color: #c0392b;
   text-align: center;
 }
 
-p {
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  color: #ccc;
-}
-
-a {
-  color: #e8c087;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-button {
-  background-color: #222;
-  color: #e8c087;
-  border: 1px solid #444;
-  padding: 8px 16px;
-  font-family: 'Courier New', monospace;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border-radius: 4px;
-}
-
-button:hover {
-  background-color: #333;
-  border-color: #777;
-}
-
-.container {
-  max-width: 960px;
-  margin: auto;
-  padding: 20px;
-}
-
-.pixel-img {
-  image-rendering: pixelated;
-}
-
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+h1 {
+  color: #c0392b;
+  font-size: 32px;
+  margin-top: 30px;
 }
 
 .grid {
@@ -69,23 +20,43 @@ button:hover {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  padding: 20px;
 }
 
-.card {
-  background-color: #1a1a1a;
-  border: 1px solid #444;
+.hero {
+  background-color: #222;
+  border: 2px solid #444;
+  border-radius: 8px;
   padding: 10px;
-  border-radius: 6px;
   width: 200px;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-.card-title {
-  font-size: 16px;
+.hero:hover {
+  transform: scale(1.05);
+  border-color: #777;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.hero p:first-of-type {
+  font-weight: bold;
   color: #e8c087;
-  margin-bottom: 5px;
+  font-size: 18px;
 }
 
-.card-text {
+.desc {
   font-size: 13px;
   color: #b0bec5;
+  font-family: "Courier New", monospace;
+  margin-top: 6px;
+}
+
+.pixel-img {
+  image-rendering: pixelated;
 }

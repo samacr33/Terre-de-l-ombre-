@@ -22,5 +22,5 @@ function confirmSelection() {
   localStorage.setItem('selectedHero', heroName);
 
   // Redirige vers la page d'aventure
-  window.location.href = 'Aventure.html';
+  window.location.href = 'jeu.html';
 }

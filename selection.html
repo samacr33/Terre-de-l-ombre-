@@ -14,36 +14,39 @@
 <body>
   <h1>Choisis ton héros</h1>
   <div class="grid">
-    <div class="hero">
+    <div class="hero" onclick="selectHero(this)">
       <img src="images/chasseur.jpg" alt="Chasseur" class="pixel-img">
       <p>Chasseur</p>
       <p class="desc">Les chasseurs de vampires, formés dans l'art ancien de la traque, affrontent la nuit avec bravoure, hantés par la peur d'être infectés.</p>
     </div>
-    <div class="hero">
+    <div class="hero" onclick="selectHero(this)">
       <img src="images/pretre.jpg" alt="Prêtre" class="pixel-img">
       <p>Prêtre</p>
       <p class="desc">Porteurs de foi et de lumière, les prêtres exorcistes purifient les âmes et renvoient les démons d'où ils viennent.</p>
     </div>
-    <div class="hero">
+    <div class="hero" onclick="selectHero(this)">
       <img src="images/sorciere.jpg" alt="Sorcière" class="pixel-img">
       <p>Sorcière</p>
       <p class="desc">Maîtres des arts occultes, les sorciers luttent contre le mal, mais certains ont été corrompus par leur propre pouvoir.</p>
     </div>
-    <div class="hero">
+    <div class="hero" onclick="selectHero(this)">
       <img src="images/alchimiste.jpg" alt="Alchimiste" class="pixel-img">
       <p>Alchimiste</p>
       <p class="desc">Maîtres des potions et transmutations, les alchimistes soignent et forgent des armes contre les ténèbres.</p>
     </div>
-    <div class="hero">
+    <div class="hero" onclick="selectHero(this)">
       <img src="images/ingenieur.jpg" alt="Ingénieur" class="pixel-img">
       <p>Ingénieur</p>
       <p class="desc">Inventeurs des temps sombres, les ingénieurs créent des armes mécaniques pour rivaliser avec la magie ennemie.</p>
     </div>
-    <div class="hero">
+    <div class="hero" onclick="selectHero(this)">
       <img src="images/chimere.jpg" alt="Chimère" class="pixel-img">
       <p>Chimère</p>
       <p class="desc">Hybrides d’hommes et de créatures, les chimères sont des armes vivantes, déchirées entre lumière et ténèbres.</p>
     </div>
   </div>
+  <button id="confirmButton" onclick="confirmSelection()" disabled>Valider la sélection</button>
+
+  <script src="script.js"></script>
 </body>
 </html>

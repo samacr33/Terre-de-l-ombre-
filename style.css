@@ -26,6 +26,17 @@ h1 {
   text-align: center;
   color: #f1f1f1;
   box-shadow: 0 0 10px #000;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero.selected {
+  border: 3px solid #ff0000;
+  box-shadow: 0 0 15px 5px #ff0000;
+}
+
+.hero:hover {
+  transform: scale(1.05);
 }
 
 /* Style des images pixel art */
@@ -45,9 +56,19 @@ h1 {
   color: #ccc;
 }
 
-/* Responsive: éviter le zoom sur mobile */
-@media (max-width: 600px) {
-  .pixel-img {
-    width: 100%;
-  }
+/* Bouton de confirmation */
+#confirmButton {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#confirmButton:disabled {
+  background-color: #888;
+  cursor: not-allowed;
 }

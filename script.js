@@ -1,16 +1,24 @@
-// Gestion de la sélection de personnage
-function selectCharacter(name, description) {
-    document.getElementById("selected-character").innerText = "Personnage sélectionné : " + name;
-    localStorage.setItem("selectedCharacter", name);
-    document.getElementById("start-game").style.display = "block";
+let selectedHero = null;
+
+function selectHero(heroElement) {
+  // Enlever la sélection précédente, si elle existe
+  if (selectedHero) {
+    selectedHero.classList.remove('selected');
+  }
+
+  // Ajouter la classe "selected" à l'élément cliqué
+  selectedHero = heroElement;
+  selectedHero.classList.add('selected');
+
+  // Activer le bouton de validation
+  document.getElementById('confirmButton').disabled = false;
 }
 
-// Redirection vers la prochaine page
-function startGame() {
-    const selectedCharacter = localStorage.getItem("selectedCharacter");
-    if (selectedCharacter) {
-        window.location.href = "jeu.html"; // Crée cette page si elle n'existe pas encore
-    } else {
-        alert("Veuillez sélectionner un personnage avant de commencer !");
-    }
+function confirmSelection() {
+  // Afficher une alerte avec le nom du héros choisi
+  const heroName = selectedHero.querySelector('p').innerText;
+  alert(`Vous avez choisi ${heroName} !`);
+
+  // Rediriger ou effectuer une autre action après la confirmation
+  // window.location.href = "suivant.html";  // Exemple pour rediriger
 }

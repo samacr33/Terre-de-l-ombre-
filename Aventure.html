@@ -2,20 +2,65 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Héros sélectionné</title>
+  <title>Ton Héros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Ton héros</h1>
-  <p id="heroDisplay">Chargement...</p>
+  <h1>Ton héros sélectionné</h1>
+
+  <div class="hero" id="heroCard">
+    <img id="heroImage" src="" alt="Héros" class="pixel-img">
+    <p id="heroName"></p>
+    <p class="desc" id="heroDesc"></p>
+  </div>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <button onclick="window.location.href='selection.html'">Retour à la sélection</button>
+    <button onclick="commencerAventure()">Commencer l’aventure</button>
+  </div>
 
   <script>
     const hero = localStorage.getItem('selectedHero');
-    if (hero) {
-      document.getElementById('heroDisplay').textContent = `Vous avez choisi : ${hero}`;
+
+    const heroData = {
+      "Chasseur": {
+        img: "images/chasseur.jpg",
+        desc: "Les chasseurs de vampires, formés dans l'art ancien de la traque, affrontent la nuit avec bravoure, hantés par la peur d'être infectés."
+      },
+      "Prêtre": {
+        img: "images/pretre.jpg",
+        desc: "Porteurs de foi et de lumière, les prêtres exorcistes purifient les âmes et renvoient les démons d'où ils viennent."
+      },
+      "Sorcière": {
+        img: "images/sorciere.jpg",
+        desc: "Maîtres des arts occultes, les sorciers luttent contre le mal, mais certains ont été corrompus par leur propre pouvoir."
+      },
+      "Alchimiste": {
+        img: "images/alchimiste.jpg",
+        desc: "Maîtres des potions et transmutations, les alchimistes soignent et forgent des armes contre les ténèbres."
+      },
+      "Ingénieur": {
+        img: "images/ingenieur.jpg",
+        desc: "Inventeurs des temps sombres, les ingénieurs créent des armes mécaniques pour rivaliser avec la magie ennemie."
+      },
+      "Chimère": {
+        img: "images/chimere.jpg",
+        desc: "Hybrides d’hommes et de créatures, les chimères sont des armes vivantes, déchirées entre lumière et ténèbres."
+      }
+    };
+
+    if (hero && heroData[hero]) {
+      document.getElementById('heroName').textContent = hero;
+      document.getElementById('heroImage').src = heroData[hero].img;
+      document.getElementById('heroDesc').textContent = heroData[hero].desc;
     } else {
-      document.getElementById('heroDisplay').textContent = `Aucun héros sélectionné.`;
+      document.getElementById('heroCard').innerHTML = "<p>Aucun héros sélectionné.</p>";
+    }
+
+    function commencerAventure() {
+      alert("Début de l’aventure avec le héros : " + hero);
+      // Tu peux rediriger ici vers une page combat.html ou autre
     }
   </script>
 </body>

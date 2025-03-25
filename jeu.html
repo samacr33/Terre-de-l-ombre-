@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jeu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
+  <div id="gameContent">
+    <h1>Bienvenue, héros</h1>
+    <p id="heroInfos">Chargement du personnage...</p>
+  </div>
+
+  <!-- Barre fixe en bas -->
+  <div id="taskbar">
+    <button onclick="openTab('carac')">Caractéristiques</button>
+    <button onclick="openTab('inventaire')">Inventaire</button>
+    <button onclick="openTab('quetes')">Quêtes</button>
+  </div>
+
+  <!-- Conteneur des onglets -->
+  <div id="interface">
+    <div id="carac" class="tab">[Caractéristiques du héros]</div>
+    <div id="inventaire" class="tab">[Inventaire & équipement]</div>
+    <div id="quetes" class="tab">[Liste de quêtes / objectifs]</div>
+  </div>
+
+  <script>
+    // Affiche le nom du héros
+    const hero = localStorage.getItem('selectedHero');
+    if (hero) {
+      document.getElementById('heroInfos').textContent = "Tu joues actuellement : " + hero;
+    }
+
+    // Gestion des onglets
+    function openTab(tabId) {
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.style.display = 'none';
+      });
+      document.getElementById(tabId).style.display = 'block';
+    }
+
+    // Afficher par défaut l’onglet "carac"
+    openTab('carac');
+  </script>
+
+</body>
+</html>

@@ -4,47 +4,51 @@
   <meta charset="UTF-8">
   <title>Sélection des héros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Lien vers le style gothique -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Police gothique -->
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
   <h1>Choisis ton héros</h1>
   <div class="grid">
+
     <div class="hero" onclick="selectHero(this)">
       <img src="images/chasseur.jpg" alt="Chasseur" class="pixel-img">
       <p>Chasseur</p>
-      <p class="desc">Les chasseurs de vampires, formés dans l'art ancien de la traque, affrontent la nuit avec bravoure, hantés par la peur d'être infectés.</p>
+      <p class="desc">Les chasseurs de vampires, formés dans l’art ancien de la traque, affrontent la nuit avec bravoure, haches et balles bénites à la main.</p>
     </div>
+
     <div class="hero" onclick="selectHero(this)">
       <img src="images/pretre.jpg" alt="Prêtre" class="pixel-img">
       <p>Prêtre</p>
-      <p class="desc">Porteurs de foi et de lumière, les prêtres exorcistes purifient les âmes et renvoient les démons d'où ils viennent.</p>
+      <p class="desc">Porteurs de foi et de lumière, les prêtres exorcistes purifient les âmes et renvoient les démons d’où ils viennent.</p>
     </div>
+
     <div class="hero" onclick="selectHero(this)">
       <img src="images/sorciere.jpg" alt="Sorcière" class="pixel-img">
       <p>Sorcière</p>
-      <p class="desc">Maîtres des arts occultes, les sorciers luttent contre le mal, mais certains ont été corrompus par leur propre pouvoir.</p>
+      <p class="desc">Maîtres des arts occultes, les sorciers luttent contre le mal, mais certains ont été corrompus par les ténèbres qu’ils manipulent.</p>
     </div>
+
     <div class="hero" onclick="selectHero(this)">
       <img src="images/alchimiste.jpg" alt="Alchimiste" class="pixel-img">
       <p>Alchimiste</p>
-      <p class="desc">Maîtres des potions et transmutations, les alchimistes soignent et forgent des armes contre les ténèbres.</p>
+      <p class="desc">Maîtres des potions et des transmutations, les alchimistes soignent et forgent des armes contre les ténèbres.</p>
     </div>
+
     <div class="hero" onclick="selectHero(this)">
       <img src="images/ingenieur.jpg" alt="Ingénieur" class="pixel-img">
       <p>Ingénieur</p>
-      <p class="desc">Inventeurs des temps sombres, les ingénieurs créent des armes mécaniques pour rivaliser avec la magie ennemie.</p>
+      <p class="desc">Inventeurs des temps sombres, les ingénieurs créent des armes mécaniques pour rivaliser avec la magie noire.</p>
     </div>
+
     <div class="hero" onclick="selectHero(this)">
       <img src="images/chimere.jpg" alt="Chimère" class="pixel-img">
       <p>Chimère</p>
       <p class="desc">Hybrides d’hommes et de créatures, les chimères sont des armes vivantes, déchirées entre lumière et ténèbres.</p>
     </div>
+
   </div>
+
   <button id="confirmButton" onclick="confirmSelection()" disabled>Valider la sélection</button>
 
   <script src="script.js"></script>

@@ -8,32 +8,24 @@
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 </head>
 <body onload="chargerJeu()">
-
   <div id="gameContent">
     <h1>Bienvenue, héros</h1>
     <p id="heroInfos">Chargement du personnage...</p>
   </div>
-
-  <!-- Barre fixe -->
   <div id="taskbar">
     <button onclick="openTab('carac')">Caractéristiques</button>
     <button onclick="openTab('inventaire')">Inventaire</button>
     <button onclick="openTab('quetes')">Quêtes</button>
   </div>
-
   <div id="interface">
     <div id="carac" class="tab">[Caractéristiques du héros]</div>
-
-    <!-- INVENTAIRE VISUEL -->
     <div id="inventaire" class="tab">
       <div class="inventory-grid">
         <div class="grid"></div>
       </div>
     </div>
-
     <div id="quetes" class="tab">[Liste de quêtes / objectifs]</div>
   </div>
-
   <script src="script.js?v=3"></script>
 </body>
 </html>

@@ -1,17 +1,88 @@
-body {
+/* --- CORRECTION ZOOM MOBILE --- */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+  margin: 0;
+  padding: 0;
   background-color: #0e0e0e;
   color: #f1f1f1;
   font-family: 'Georgia', serif;
-  margin: 0;
-  padding: 0;
 }
 
+/* --- TITRE PRINCIPAL --- */
 h1 {
   font-family: 'UnifrakturCook', cursive;
   text-align: center;
   font-size: 2.5em;
   color: #eb4b7b;
   margin-top: 20px;
+}
+
+/* --- GRILLE DE SÉLECTION DES HÉROS --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* --- CARTES HÉROS --- */
+.hero {
+  background-color: #1c1c1c;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 0 10px #000;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero:hover {
+  transform: scale(1.05);
+}
+
+.hero.selected {
+  border: 3px solid #ff0000;
+  box-shadow: 0 0 15px 5px #ff0000;
+}
+
+/* --- IMAGE PIXEL ART --- */
+.pixel-img {
+  max-width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  display: block;
+  margin: auto;
+}
+
+/* --- DESCRIPTION DU HÉROS --- */
+.desc {
+  font-size: 0.9em;
+  margin-top: 10px;
+  color: #cccccc;
+}
+
+/* --- BOUTON DE VALIDATION --- */
+#confirmButton {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#confirmButton:disabled {
+  background-color: #888;
+  cursor: not-allowed;
 }
 
 /* --- BARRE FIXE EN BAS --- */
@@ -42,7 +113,7 @@ h1 {
   background-color: #444;
 }
 
-/* --- CONTENU DES ONGLET --- */
+/* --- CONTENU DES ONGLETS --- */
 #interface {
   margin-bottom: 80px;
 }

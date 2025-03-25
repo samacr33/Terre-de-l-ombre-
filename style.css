@@ -1,4 +1,4 @@
-/* --- CORRECTION ZOOM MOBILE --- */
+/* --- RÉGLAGES GÉNÉRAUX --- */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -11,78 +11,12 @@ html, body {
   font-family: 'Georgia', serif;
 }
 
-/* --- TITRE PRINCIPAL --- */
 h1 {
   font-family: 'UnifrakturCook', cursive;
   text-align: center;
   font-size: 2.5em;
   color: #eb4b7b;
   margin-top: 20px;
-}
-
-/* --- GRILLE DE SÉLECTION DES HÉROS --- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* --- CARTES HÉROS --- */
-.hero {
-  background-color: #1c1c1c;
-  border: 1px solid #444;
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  color: #ffffff;
-  box-shadow: 0 0 10px #000;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hero:hover {
-  transform: scale(1.05);
-}
-
-.hero.selected {
-  border: 3px solid #ff0000;
-  box-shadow: 0 0 15px 5px #ff0000;
-}
-
-/* --- IMAGE PIXEL ART --- */
-.pixel-img {
-  max-width: 100%;
-  height: auto;
-  image-rendering: pixelated;
-  display: block;
-  margin: auto;
-}
-
-/* --- DESCRIPTION DU HÉROS --- */
-.desc {
-  font-size: 0.9em;
-  margin-top: 10px;
-  color: #cccccc;
-}
-
-/* --- BOUTON DE VALIDATION --- */
-#confirmButton {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #444;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#confirmButton:disabled {
-  background-color: #888;
-  cursor: not-allowed;
 }
 
 /* --- BARRE FIXE EN BAS --- */
@@ -113,9 +47,8 @@ h1 {
   background-color: #444;
 }
 
-/* --- CONTENU DES ONGLETS --- */
 #interface {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 .tab {
@@ -125,28 +58,77 @@ h1 {
   border: 1px solid #444;
   padding: 20px;
   border-radius: 6px;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 20px auto;
 }
 
-/* --- OBJETS DANS INVENTAIRE --- */
-.objet {
-  background-color: #222;
-  border: 1px solid #555;
+/* --- INVENTAIRE VISUEL --- */
+.inventory-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+/* --- Partie Personnage + Équipement --- */
+.equip-zone {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.character-slot {
+  background-color: #111;
+  border: 2px solid #444;
   padding: 10px;
-  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 120px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.character-img {
+  max-height: 160px;
+  image-rendering: pixelated;
+  filter: brightness(0.9);
+}
+
+/* --- Slots d’équipement autour --- */
+.equip-slots {
+  display: grid;
+  grid-template-columns: repeat(2, 100px);
+  gap: 10px;
+}
+
+.slot {
+  width: 100px;
+  height: 100px;
+  background-color: #222;
+  border: 1px solid #666;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  color: #bbb;
 }
 
-.objet button {
-  background-color: #660000;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  margin-top: 5px;
-  cursor: pointer;
+/* --- Grille d’inventaire (6x4) --- */
+.inventory-grid .grid {
+  display: grid;
+  grid-template-columns: repeat(6, 60px);
+  grid-template-rows: repeat(4, 60px);
+  gap: 5px;
+  justify-content: center;
 }
 
-.objet button:hover {
-  background-color: #990000;
+.cell {
+  width: 60px;
+  height: 60px;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 4px;
 }

@@ -14,16 +14,25 @@ function confirmSelection() {
   const heroName = selectedHero.querySelector('p').innerText;
   localStorage.setItem('selectedHero', heroName);
 
-  // Création d'un inventaire de base
-  const inventaire = [
-    { nom: "Potion de soin", type: "consommable", description: "Rend 50 PV", quantite: 2 },
-    { nom: "Épée rouillée", type: "arme", description: "Une vieille lame émoussée", quantite: 1 }
-  ];
+  // Inventaire initial : 2 potions de soin
+  const inventaire = [];
+  for (let i = 0; i < 2; i++) {
+    inventaire.push({
+      nom: "Potion de soin",
+      type: "consommable",
+      effet: "Rend 50 PV",
+      image: "images/potion-soin.png",
+      quantite: 1
+    });
+  }
+  // compléter avec des cases vides jusqu’à 24
+  while (inventaire.length < 24) inventaire.push(null);
+
   localStorage.setItem('inventaire', JSON.stringify(inventaire));
   window.location.href = 'jeu.html';
 }
 
-// --- JEU : AFFICHAGE DU HÉROS & INVENTAIRE ---
+// --- AFFICHAGE DU JEU ---
 function chargerJeu() {
   const hero = localStorage.getItem('selectedHero');
   if (hero) {
@@ -34,45 +43,71 @@ function chargerJeu() {
 }
 
 function openTab(tabId) {
-  document.querySelectorAll('.tab').forEach(tab => {
-    tab.style.display = 'none';
-  });
+  document.querySelectorAll('.tab').forEach(tab => tab.style.display = 'none');
   document.getElementById(tabId).style.display = 'block';
 }
 
+// --- INVENTAIRE VISUEL ---
 function afficherInventaire() {
-  const inventaire = JSON.parse(localStorage.getItem('inventaire')) || [];
-  const inventaireDiv = document.getElementById('inventaire');
-  inventaireDiv.innerHTML = '';
+  const data = JSON.parse(localStorage.getItem('inventaire')) || [];
+  const grid = document.querySelector('.grid');
+  if (!grid) return;
 
-  if (inventaire.length === 0) {
-    inventaireDiv.innerHTML = '<p>Inventaire vide.</p>';
-    return;
-  }
+  grid.innerHTML = '';
 
-  inventaire.forEach((item, index) => {
-    const itemBox = document.createElement('div');
-    itemBox.className = 'objet';
-    itemBox.innerHTML = `
-      <strong>${item.nom}</strong> (${item.type})<br/>
-      <em>${item.description}</em><br/>
-      Quantité : ${item.quantite}<br/>
-      ${item.type === 'consommable' ? `<button onclick="utiliserObjet(${index})">Utiliser</button>` : ''}
-    `;
-    inventaireDiv.appendChild(itemBox);
+  data.forEach((item, index) => {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.setAttribute('draggable', 'true');
+    cell.dataset.index = index;
+
+    if (item && item.image) {
+      const img = document.createElement('img');
+      img.src = item.image;
+      img.alt = item.nom;
+      img.title = item.nom + ' - ' + item.effet;
+      img.className = 'item-icon';
+      cell.appendChild(img);
+
+      cell.onclick = () => {
+        if (item.type === 'consommable') {
+          alert(`${item.nom} utilisé ! ${item.effet}`);
+          data[index] = null;
+          localStorage.setItem('inventaire', JSON.stringify(data));
+          afficherInventaire();
+        }
+      };
+    }
+
+    grid.appendChild(cell);
   });
 }
 
-function utiliserObjet(index) {
-  let inventaire = JSON.parse(localStorage.getItem('inventaire')) || [];
-  const objet = inventaire[index];
-  if (objet && objet.type === 'consommable') {
-    objet.quantite -= 1;
-    alert(objet.nom + " utilisé !");
-    if (objet.quantite <= 0) {
-      inventaire.splice(index, 1);
-    }
-    localStorage.setItem('inventaire', JSON.stringify(inventaire));
+// --- DRAG & DROP SIMPLE ---
+let dragged = null;
+
+document.addEventListener('dragstart', (e) => {
+  if (e.target.classList.contains('cell')) {
+    dragged = e.target;
+  }
+});
+
+document.addEventListener('dragover', (e) => {
+  e.preventDefault();
+});
+
+document.addEventListener('drop', (e) => {
+  if (e.target.classList.contains('cell') && dragged && e.target !== dragged) {
+    const grid = document.querySelectorAll('.cell');
+    const from = parseInt(dragged.dataset.index);
+    const to = parseInt(e.target.dataset.index);
+
+    const data = JSON.parse(localStorage.getItem('inventaire')) || [];
+    const temp = data[from];
+    data[from] = data[to];
+    data[to] = temp;
+
+    localStorage.setItem('inventaire', JSON.stringify(data));
     afficherInventaire();
   }
-}
+});

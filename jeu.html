@@ -21,94 +21,19 @@
     <button onclick="openTab('quetes')">Quêtes</button>
   </div>
 
-  <!-- Interface Onglets -->
   <div id="interface">
     <div id="carac" class="tab">[Caractéristiques du héros]</div>
 
     <!-- INVENTAIRE VISUEL -->
     <div id="inventaire" class="tab">
-      <div class="inventory-container">
-
-        <!-- Zone personnage et slots équipement -->
-        <div class="equip-zone">
-          <div class="character-slot">
-            <img src="images/ombre.jpg" alt="Personnage" class="character-img">
-          </div>
-          <div class="equip-slots">
-            <div class="slot" data-slot="tete">Tête</div>
-            <div class="slot" data-slot="torse">Torse</div>
-            <div class="slot" data-slot="main">Main</div>
-            <div class="slot" data-slot="jambes">Jambes</div>
-            <div class="slot" data-slot="bottes">Bottes</div>
-          </div>
-        </div>
-
-        <!-- Grille d'inventaire -->
-        <div class="inventory-grid">
-          <!-- 6 colonnes × 4 lignes -->
-          <div class="grid">
-            <!-- Générée dynamiquement par JS si besoin -->
-            <!-- Exemple de case vide -->
-            <div class="cell" draggable="true"></div>
-            <!-- Répété 24x -->
-          </div>
-        </div>
+      <div class="inventory-grid">
+        <div class="grid"></div>
       </div>
     </div>
 
     <div id="quetes" class="tab">[Liste de quêtes / objectifs]</div>
   </div>
 
-  <!-- SCRIPTS -->
-  <script src="script.js"></script>
-  <script>
-    // Gestion des onglets
-    function openTab(tabId) {
-      document.querySelectorAll('.tab').forEach(tab => tab.style.display = 'none');
-      document.getElementById(tabId).style.display = 'block';
-    }
-
-    function chargerJeu() {
-      const hero = localStorage.getItem('selectedHero');
-      if (hero) {
-        document.getElementById('heroInfos').textContent = "Tu joues actuellement : " + hero;
-      }
-      openTab('carac');
-    }
-
-    // Génère la grille (6x4) dynamiquement
-    const grid = document.querySelector('.grid');
-    if (grid) {
-      for (let i = 0; i < 24; i++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        cell.setAttribute('draggable', 'true');
-        grid.appendChild(cell);
-      }
-    }
-
-    // Drag & Drop de base
-    let dragged = null;
-
-    document.addEventListener('dragstart', (e) => {
-      if (e.target.classList.contains('cell') || e.target.classList.contains('slot')) {
-        dragged = e.target;
-      }
-    });
-
-    document.addEventListener('dragover', (e) => {
-      e.preventDefault();
-    });
-
-    document.addEventListener('drop', (e) => {
-      if ((e.target.classList.contains('cell') || e.target.classList.contains('slot')) && dragged) {
-        const temp = document.createElement('div');
-        temp.innerHTML = dragged.innerHTML;
-        dragged.innerHTML = e.target.innerHTML;
-        e.target.innerHTML = temp.innerHTML;
-        dragged = null;
-      }
-    });
-  </script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

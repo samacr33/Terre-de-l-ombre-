@@ -1,3 +1,4 @@
+// ------------------ HÉROS ------------------
 let selectedHero = null;
 
 function selectHero(heroElement) {
@@ -13,8 +14,10 @@ function confirmSelection() {
   const heroName = selectedHero.querySelector('p').innerText;
   localStorage.setItem('selectedHero', heroName);
 
+  // --- INVENTAIRE INITIAL ---
   const inventaire = [];
 
+  // 2 potions de soin
   for (let i = 0; i < 2; i++) {
     inventaire.push({
       nom: "Potion de soin",
@@ -24,29 +27,31 @@ function confirmSelection() {
     });
   }
 
+  // Compléter jusqu'à 24 cases
   while (inventaire.length < 24) inventaire.push(null);
 
   localStorage.setItem('inventaire', JSON.stringify(inventaire));
-  window.location.href = 'jeu.html';
+  window.location.href = 'jeu.html?v=5';
 }
 
-// --- CHARGEMENT DU JEU ---
+// ------------------ CHARGEMENT DU JEU ------------------
 function chargerJeu() {
   const hero = localStorage.getItem('selectedHero');
   if (hero) {
     document.getElementById('heroInfos').textContent = "Tu joues actuellement : " + hero;
   }
+
   openTab('carac');
   afficherInventaire();
 }
 
-// --- ONGLET ---
+// ------------------ ONGLET ------------------
 function openTab(tabId) {
   document.querySelectorAll('.tab').forEach(tab => tab.style.display = 'none');
   document.getElementById(tabId).style.display = 'block';
 }
 
-// --- INVENTAIRE ---
+// ------------------ INVENTAIRE ------------------
 function afficherInventaire() {
   const data = JSON.parse(localStorage.getItem('inventaire')) || [];
   const grid = document.querySelector('.grid');
@@ -68,6 +73,7 @@ function afficherInventaire() {
       img.className = 'item-icon';
       cell.appendChild(img);
 
+      // Clic = utilisation
       cell.onclick = () => {
         if (item.type === 'consommable') {
           alert(`${item.nom} utilisé ! ${item.effet}`);
@@ -82,7 +88,7 @@ function afficherInventaire() {
   });
 }
 
-// --- DRAG & DROP ---
+// ------------------ DRAG & DROP ------------------
 let dragged = null;
 
 document.addEventListener('dragstart', (e) => {

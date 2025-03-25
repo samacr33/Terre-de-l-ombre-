@@ -1,6 +1,5 @@
 let selectedHero = null;
 
-// --- SÉLECTION DU HÉROS ---
 function selectHero(heroElement) {
   const allHeroes = document.querySelectorAll('.hero');
   allHeroes.forEach(hero => hero.classList.remove('selected'));
@@ -14,25 +13,24 @@ function confirmSelection() {
   const heroName = selectedHero.querySelector('p').innerText;
   localStorage.setItem('selectedHero', heroName);
 
-  // Inventaire initial : 2 potions de soin
   const inventaire = [];
+
   for (let i = 0; i < 2; i++) {
     inventaire.push({
       nom: "Potion de soin",
       type: "consommable",
       effet: "Rend 50 PV",
-      image: "images/potion-soin.png",
-      quantite: 1
+      image: "images/potion-soin.png"
     });
   }
-  // compléter avec des cases vides jusqu’à 24
+
   while (inventaire.length < 24) inventaire.push(null);
 
   localStorage.setItem('inventaire', JSON.stringify(inventaire));
   window.location.href = 'jeu.html';
 }
 
-// --- AFFICHAGE DU JEU ---
+// --- CHARGEMENT DU JEU ---
 function chargerJeu() {
   const hero = localStorage.getItem('selectedHero');
   if (hero) {
@@ -42,12 +40,13 @@ function chargerJeu() {
   afficherInventaire();
 }
 
+// --- ONGLET ---
 function openTab(tabId) {
   document.querySelectorAll('.tab').forEach(tab => tab.style.display = 'none');
   document.getElementById(tabId).style.display = 'block';
 }
 
-// --- INVENTAIRE VISUEL ---
+// --- INVENTAIRE ---
 function afficherInventaire() {
   const data = JSON.parse(localStorage.getItem('inventaire')) || [];
   const grid = document.querySelector('.grid');
@@ -83,7 +82,7 @@ function afficherInventaire() {
   });
 }
 
-// --- DRAG & DROP SIMPLE ---
+// --- DRAG & DROP ---
 let dragged = null;
 
 document.addEventListener('dragstart', (e) => {
@@ -98,7 +97,6 @@ document.addEventListener('dragover', (e) => {
 
 document.addEventListener('drop', (e) => {
   if (e.target.classList.contains('cell') && dragged && e.target !== dragged) {
-    const grid = document.querySelectorAll('.cell');
     const from = parseInt(dragged.dataset.index);
     const to = parseInt(e.target.dataset.index);
 

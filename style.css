@@ -1,4 +1,3 @@
-/* --- RÉGLAGES GÉNÉRAUX --- */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -19,7 +18,7 @@ h1 {
   margin-top: 20px;
 }
 
-/* --- BARRE FIXE EN BAS --- */
+/* BARRE FIXE */
 #taskbar {
   position: fixed;
   bottom: 0;
@@ -62,61 +61,7 @@ h1 {
   margin: 20px auto;
 }
 
-/* --- INVENTAIRE VISUEL --- */
-.inventory-container {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
-}
-
-/* --- Partie Personnage + Équipement --- */
-.equip-zone {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.character-slot {
-  background-color: #111;
-  border: 2px solid #444;
-  padding: 10px;
-  border-radius: 5px;
-  width: 120px;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.character-img {
-  max-height: 160px;
-  image-rendering: pixelated;
-  filter: brightness(0.9);
-}
-
-/* --- Slots d’équipement autour --- */
-.equip-slots {
-  display: grid;
-  grid-template-columns: repeat(2, 100px);
-  gap: 10px;
-}
-
-.slot {
-  width: 100px;
-  height: 100px;
-  background-color: #222;
-  border: 1px solid #666;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9em;
-  color: #bbb;
-}
-
-/* --- Grille d’inventaire (6x4) --- */
+/* INVENTAIRE GRILLE */
 .inventory-grid .grid {
   display: grid;
   grid-template-columns: repeat(6, 60px);
@@ -136,7 +81,7 @@ h1 {
   justify-content: center;
 }
 
-/* --- Icônes d’objets (ex : potion) --- */
+/* ICÔNES */
 .item-icon {
   width: 100%;
   height: 100%;

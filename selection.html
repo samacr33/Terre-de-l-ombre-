@@ -2,46 +2,19 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Sélection des héros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <title>Sélection de personnage</title>
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
   <h1>Choisis ton héros</h1>
-  <div class="grid">
-    <div class="hero" onclick="selectHero(this)">
-      <img src="images/chasseur.jpg" alt="Chasseur" class="pixel-img">
-      <p>Chasseur</p>
-      <p class="desc">Les chasseurs de vampires affrontent la nuit avec bravoure.</p>
-    </div>
-    <div class="hero" onclick="selectHero(this)">
-      <img src="images/pretre.jpg" alt="Prêtre" class="pixel-img">
-      <p>Prêtre</p>
-      <p class="desc">Les prêtres exorcistes purifient les âmes et renvoient les démons.</p>
-    </div>
-    <div class="hero" onclick="selectHero(this)">
-      <img src="images/sorciere.jpg" alt="Sorcière" class="pixel-img">
-      <p>Sorcière</p>
-      <p class="desc">Les sorciers luttent contre le mal avec la magie noire.</p>
-    </div>
-    <div class="hero" onclick="selectHero(this)">
-      <img src="images/alchimiste.jpg" alt="Alchimiste" class="pixel-img">
-      <p>Alchimiste</p>
-      <p class="desc">Les alchimistes forgent des armes contre les ténèbres.</p>
-    </div>
-    <div class="hero" onclick="selectHero(this)">
-      <img src="images/ingenieur.jpg" alt="Ingénieur" class="pixel-img">
-      <p>Ingénieur</p>
-      <p class="desc">Les ingénieurs créent des armes mécaniques redoutables.</p>
-    </div>
-    <div class="hero" onclick="selectHero(this)">
-      <img src="images/chimere.jpg" alt="Chimère" class="pixel-img">
-      <p>Chimère</p>
-      <p class="desc">Les chimères sont des armes vivantes, entre ombre et lumière.</p>
-    </div>
+
+  <div class="choix-personnage">
+    <button onclick="window.location.href='jeu.html'">Prêtre Exorciste</button>
+    <button onclick="window.location.href='jeu.html'">Sœur Sorcière</button>
+    <button onclick="window.location.href='jeu.html'">Alchimiste</button>
+    <button onclick="window.location.href='jeu.html'">Ingénieur</button>
+    <button onclick="window.location.href='jeu.html'">Chimère</button>
   </div>
-  <button id="confirmButton" onclick="confirmSelection()" disabled>Valider la sélection</button>
-  <script src="script.js"></script>
 </body>
 </html>
